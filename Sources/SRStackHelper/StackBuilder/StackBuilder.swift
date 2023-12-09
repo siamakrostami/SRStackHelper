@@ -64,7 +64,7 @@ extension StackBuilder {
         stackView.arrangedSubviews.forEach { $0.isHidden = true }
     }
 
-    public func clearStacks() {
+    public func avadaKedavra() {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         stackView.removeFromSuperview()
     }
