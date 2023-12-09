@@ -103,7 +103,7 @@ extension StackResultBuilder {
         stackView.arrangedSubviews.forEach { $0.isHidden = true }
     }
     
-    public func clearStacks() {
+    public func avadaKedavra() {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         stackView.removeFromSuperview()
     }
@@ -131,7 +131,10 @@ extension StackResultBuilder {
     }
     
     private func addItemsToStack(items: [StackItem]?, stack: UIStackView) {
-        items?.forEach { item in
+        items?.forEach { [weak self] item in
+            guard let _ = self else {
+                return
+            }
             switch item {
             case .text(let label, let properties):
                 label.textColor = properties.textColor
