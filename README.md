@@ -34,3 +34,8 @@ let stackView = bottomSheetStackBuilder.build()
 // Customize, hide, or show the stack as needed
 bottomSheetStackBuilder.hideStack()
 bottomSheetStackBuilder.showStack()
+```
+
+## Example
+
+For a detailed example, see the [SRStackHelperExample](https://github.com/siamakrostami/SRStackHelperExample) repository. It demonstrates how to use SRStackHelper in a real-world project.
