@@ -34,6 +34,9 @@ let stackView = SRStackHelper.build()
 // Customize, hide, or show the stack as needed
 SRStackHelper.hideStack()
 SRStackHelper.showStack()
+
+// Destroy the stack as needed
+SRStackHelper.avadaKedavra()
 ```
 
 ## Example
