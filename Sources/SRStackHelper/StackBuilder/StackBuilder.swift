@@ -105,12 +105,29 @@ extension StackBuilder {
                 stack.addArrangedSubview(label)
 
             case .button(let button):
+                button.translatesAutoresizingMaskIntoConstraints = false
+                let size = button.frame.size
+                guard size.height > 0 && size.width > 0 else {
+                    stack.addArrangedSubview(button)
+                    return
+                }
+                button.heightAnchor.constraint(equalToConstant: size.height).isActive = true
+                button.widthAnchor.constraint(equalToConstant: size.width).isActive = true
                 stack.addArrangedSubview(button)
 
-            case .imageView(let frame, let image):
+            case .imageView(let frame, let image, let contentMode):
                 let imageView = UIImageView()
                 imageView.frame = frame ?? .zero
                 imageView.image = image
+                imageView.contentMode = contentMode
+                imageView.translatesAutoresizingMaskIntoConstraints = false
+                let size = imageView.frame.size
+                guard size.height > 0 && size.width > 0 else {
+                    stack.addArrangedSubview(imageView)
+                    return
+                }
+                imageView.heightAnchor.constraint(equalToConstant: size.height).isActive = true
+                imageView.widthAnchor.constraint(equalToConstant: size.width).isActive = true
                 stack.addArrangedSubview(imageView)
             }
         }
