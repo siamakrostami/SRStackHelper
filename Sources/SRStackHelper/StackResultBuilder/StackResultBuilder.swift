@@ -119,8 +119,8 @@ public extension StackResultBuilder {
     func hideStack() {
         stackView.arrangedSubviews.forEach { $0.isHidden = true }
     }
-    
-    public func avadaKedavra() {
+
+    func avadaKedavra() {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         stackView.removeFromSuperview()
     }

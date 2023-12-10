@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - StackBuilder
 
- open class StackBuilder {
+open class StackBuilder {
     // MARK: Lifecycle
 
     public init() {}
@@ -28,9 +28,9 @@ import UIKit
     }()
 }
 
-extension StackBuilder {
+public extension StackBuilder {
     @discardableResult
-    public func createStackRow(item: StackItem?) -> StackBuilder {
+    func createStackRow(item: StackItem?) -> StackBuilder {
         guard let item = item else {
             return self
         }
@@ -41,7 +41,7 @@ extension StackBuilder {
     }
 
     @discardableResult
-    public func createStackRow(rowRightItems: [StackItem]?, rowLeftItems: [StackItem]?, rowRightInternalStackType: StackType?, rowLeftInternalStackType: StackType?, rowStackType: StackType) -> StackBuilder {
+    func createStackRow(rowRightItems: [StackItem]?, rowLeftItems: [StackItem]?, rowRightInternalStackType: StackType?, rowLeftInternalStackType: StackType?, rowStackType: StackType) -> StackBuilder {
         let rightInternalStack = createInternalStack(stackType: rowRightInternalStackType)
         let leftInternalStack = createInternalStack(stackType: rowLeftInternalStackType)
         let externalStack = createExternalStack(stackType: rowStackType)
@@ -56,20 +56,20 @@ extension StackBuilder {
         return self
     }
 
-    public func build() -> UIStackView {
+    func build() -> UIStackView {
         return stackView
     }
 
-    public func hideStack() {
+    func hideStack() {
         stackView.arrangedSubviews.forEach { $0.isHidden = true }
     }
 
-    public func avadaKedavra() {
+    func avadaKedavra() {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         stackView.removeFromSuperview()
     }
 
-    public func showStack() {
+    func showStack() {
         stackView.arrangedSubviews.forEach { $0.isHidden = false }
     }
 
@@ -107,7 +107,7 @@ extension StackBuilder {
             case .button(let button):
                 button.translatesAutoresizingMaskIntoConstraints = false
                 let size = button.frame.size
-                guard size.height > 0 && size.width > 0 else {
+                guard size.height > 0, size.width > 0 else {
                     stack.addArrangedSubview(button)
                     return
                 }
@@ -122,7 +122,7 @@ extension StackBuilder {
                 imageView.contentMode = contentMode
                 imageView.translatesAutoresizingMaskIntoConstraints = false
                 let size = imageView.frame.size
-                guard size.height > 0 && size.width > 0 else {
+                guard size.height > 0, size.width > 0 else {
                     stack.addArrangedSubview(imageView)
                     return
                 }
