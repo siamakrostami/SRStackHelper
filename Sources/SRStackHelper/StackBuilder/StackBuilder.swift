@@ -26,6 +26,8 @@ open class StackBuilder {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+    
+    public var stackHeight: CGFloat = 0
 }
 
 public extension StackBuilder {
@@ -102,6 +104,7 @@ public extension StackBuilder {
                 label.textAlignment = properties.alignment
                 label.font = properties.font
                 label.numberOfLines = properties.numberOfLines
+                self?.stackHeight += label.text?.height(withConstrainedWidth: UIScreen.main.bounds.width, properties.font) ?? 0
                 stack.addArrangedSubview(label)
 
             case .button(let button):
@@ -113,6 +116,7 @@ public extension StackBuilder {
                 }
                 button.heightAnchor.constraint(equalToConstant: size.height).isActive = true
                 button.widthAnchor.constraint(equalToConstant: size.width).isActive = true
+                self?.stackHeight += size.height
                 stack.addArrangedSubview(button)
 
             case .imageView(let frame, let image, let contentMode):
@@ -128,6 +132,7 @@ public extension StackBuilder {
                 }
                 imageView.heightAnchor.constraint(equalToConstant: size.height).isActive = true
                 imageView.widthAnchor.constraint(equalToConstant: size.width).isActive = true
+                self?.stackHeight += size.height
                 stack.addArrangedSubview(imageView)
             }
         }
