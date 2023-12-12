@@ -26,6 +26,8 @@ open class StackResultBuilder {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+    
+    public var stackHeight: CGFloat = 0
 }
 
 // MARK: - StackBlockBuilder
@@ -58,6 +60,7 @@ public extension StackResultBuilder {
             label.textAlignment = properties.alignment
             label.font = properties.font
             label.numberOfLines = properties.numberOfLines
+            self.stackHeight += label.text?.height(withConstrainedWidth: UIScreen.main.bounds.width - 32, properties.font) ?? 0
             stackView.addArrangedSubview(label)
 
         case .button(let button):
@@ -69,6 +72,7 @@ public extension StackResultBuilder {
             }
             button.heightAnchor.constraint(equalToConstant: size.height).isActive = true
             button.widthAnchor.constraint(equalToConstant: size.width).isActive = true
+            self.stackHeight += size.height
             stackView.addArrangedSubview(button)
 
         case .imageView(let frame, let image, let contentMode):
@@ -84,6 +88,7 @@ public extension StackResultBuilder {
             }
             imageView.heightAnchor.constraint(equalToConstant: size.height).isActive = true
             imageView.widthAnchor.constraint(equalToConstant: size.width).isActive = true
+            self.stackHeight += size.height
             stackView.addArrangedSubview(imageView)
         }
 
@@ -158,6 +163,7 @@ public extension StackResultBuilder {
                 label.textAlignment = properties.alignment
                 label.font = properties.font
                 label.numberOfLines = properties.numberOfLines
+                self?.stackHeight += label.text?.height(withConstrainedWidth: UIScreen.main.bounds.width - 32, properties.font) ?? 0
                 stack.addArrangedSubview(label)
 
             case .button(let button):
@@ -169,6 +175,7 @@ public extension StackResultBuilder {
                 }
                 button.heightAnchor.constraint(equalToConstant: size.height).isActive = true
                 button.widthAnchor.constraint(equalToConstant: size.width).isActive = true
+                self?.stackHeight += size.height
                 stack.addArrangedSubview(button)
 
             case .imageView(let frame, let image, let contentMode):
@@ -184,6 +191,7 @@ public extension StackResultBuilder {
                 }
                 imageView.heightAnchor.constraint(equalToConstant: size.height).isActive = true
                 imageView.widthAnchor.constraint(equalToConstant: size.width).isActive = true
+                self?.stackHeight += size.height
                 stack.addArrangedSubview(imageView)
             }
         }

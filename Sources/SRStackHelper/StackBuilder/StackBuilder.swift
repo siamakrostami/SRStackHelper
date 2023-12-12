@@ -36,7 +36,12 @@ public extension StackBuilder {
         guard let item = item else {
             return self
         }
-
+        switch item {
+        case .text(let label, let properties):
+            self.stackHeight += label.text?.height(withConstrainedWidth: UIScreen.main.bounds.width - 32, properties.font) ?? 0
+        default:
+            break
+        }
         addItemsToStack(items: [item], stack: stackView)
 
         return self
@@ -51,8 +56,11 @@ public extension StackBuilder {
         addItemsToStack(items: rowRightItems, stack: rightInternalStack)
         addItemsToStack(items: rowLeftItems, stack: leftInternalStack)
 
+
         externalStack.addArrangedSubview(leftInternalStack)
         externalStack.addArrangedSubview(rightInternalStack)
+        
+        
         stackView.addArrangedSubview(externalStack)
 
         return self
@@ -104,7 +112,6 @@ public extension StackBuilder {
                 label.textAlignment = properties.alignment
                 label.font = properties.font
                 label.numberOfLines = properties.numberOfLines
-                self?.stackHeight += label.text?.height(withConstrainedWidth: UIScreen.main.bounds.width, properties.font) ?? 0
                 stack.addArrangedSubview(label)
 
             case .button(let button):
