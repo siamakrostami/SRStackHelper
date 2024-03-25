@@ -1,0 +1,15 @@
+{
+  "originHash" : "f5798ef6ba344e9319a12f6ad17c53220a6d3bfed4343e087209064d3ad183d2",
+  "pins" : [
+    {
+      "identity" : "srstackhelper",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siamakrostami/SRStackHelper/",
+      "state" : {
+        "revision" : "1fe12d7c2b320e6144b3ad96bb0afb8344fbcfed",
+        "version" : "1.0.2"
+      }
+    }
+  ],
+  "version" : 3
+}
