@@ -141,6 +141,18 @@ public extension StackBuilder {
                 imageView.widthAnchor.constraint(equalToConstant: size.width).isActive = true
                 self?.stackHeight += size.height
                 stack.addArrangedSubview(imageView)
+                case .anyView(view: let view):
+                    view.translatesAutoresizingMaskIntoConstraints = false
+                    let size = view.frame.size
+                    guard size.height > 0, size.width > 0 else {
+                        stack.addArrangedSubview(view)
+                        return
+                    }
+                    view.heightAnchor.constraint(equalToConstant: size.height).isActive = true
+                    view.widthAnchor.constraint(equalToConstant: size.width).isActive = true
+                    self?.stackHeight += size.height
+                    stack.addArrangedSubview(view)
+                    
             }
         }
     }

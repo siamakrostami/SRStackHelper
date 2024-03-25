@@ -27,7 +27,11 @@ open class StackButton: UIButton {
         self.backgroundColor = backgroundColor ?? .blue
         self.tintColor = tintColor ?? .blue
         setTitleColor(titleColor, for: .normal)
-        addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        let action = UIAction { [weak self] _ in
+            guard let _ = self else {return}
+            action?()
+        }
+        addAction(action, for: .touchUpInside)
     }
     
     @available(*, unavailable)
@@ -35,13 +39,4 @@ open class StackButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Private
-
-    private var action: (() -> Void)?
-}
-
-extension StackButton {
-    @objc private func buttonAction() {
-        action?()
-    }
 }

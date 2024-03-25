@@ -12,5 +12,6 @@ import UIKit
 public enum StackItem {
     case text(label: StackObservableLabel, properties: StackLabelProperties)
     case button(button: StackButton)
-    case imageView(frame: CGRect?, image: UIImage?, contentMode: UIView.ContentMode )
+    case imageView(frame: CGRect?, image: UIImage?, contentMode: UIView.ContentMode)
+    case anyView(view: UIView)
 }
