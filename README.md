@@ -39,6 +39,3 @@ SRStackHelper.showStack()
 SRStackHelper.avadaKedavra()
 ```
 
-## Example
-
-For a detailed example, see the [SRStackHelperExample](https://github.com/siamakrostami/SRStackHelperExample) repository. It demonstrates how to use SRStackHelper in a real-world project.
